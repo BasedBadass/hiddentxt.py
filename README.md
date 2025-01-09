@@ -66,7 +66,7 @@ Decoding reverses the process:
 
 * The script checks for image file existence and basic error handling during image processing.
 * The message length is limited by the image size. Ensure the message can fit within the image's available bits for successful encoding.
-* Changing the output file extension (e.g., from `.jpg` to `.png`) will not convert the format. You would need to use image editing software for format conversion.
+* Changing the output file extension (e.g., from `.jpg` to `.png`) will convert the format.
 
 **Future Improvements:**
 
