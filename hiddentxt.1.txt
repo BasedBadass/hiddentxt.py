@@ -1,0 +1,71 @@
+.TH hiddentxt 1 "Jan 2025" "Image Text Hider" "User Commands"
+.SH NAME
+hiddentxt \- Encode and decode text within images using LSB steganography
+.SH SYNOPSIS
+.B hiddentxt
+[\fIencode\fR \fIinput_image\fR \fIoutput_image\fR \fI"message"\fR]
+[\fIdecode\fR \fIinput_image\fR]
+.SH DESCRIPTION
+.B hiddentxt
+is a command-line tool that implements Least Significant Bit (LSB) steganography to hide text messages within image files. It provides two main functionalities: encoding a message into an image and decoding a hidden message from an encoded image.
+.SH OPTIONS
+.TP
+.B encode
+Encode a text message into an image. Requires an input image, an output image name, and the message to be encoded.
+.TP
+.I input_image
+Path to the input image file. Supported formats depend on the Pillow library's capabilities (common formats like JPEG and PNG are usually supported).
+.TP
+.I output_image
+Path to save the encoded image. PNG format is recommended to avoid re-compression artifacts that could corrupt the hidden message.
+.TP
+.I "message"
+The text message to be hidden within the image. Enclose the message in double quotes if it contains spaces.
+.TP
+.B decode
+Decode a hidden message from an encoded image. Requires the path to the encoded image.
+.TP
+.I input_image
+Path to the encoded image file.
+.SH EXAMPLES
+.TP
+Encode the message "Secret message" into input.jpg and save the result as output.png:
+.RS
+.B hiddentxt encode input.jpg output.png "Secret message"
+.RE
+.TP
+Decode the hidden message from output.png:
+.RS
+.B hiddentxt decode output.png
+.RE
+.SH DIAGNOSTICS
+The following exit status codes may be returned:
+.TP
+.B 0
+Successful execution.
+.TP
+.B 1
+An error occurred, such as:
+.RS
+.TP
+\*(bu
+File not found (input or output image).
+.TP
+\*(bu
+Message too large to fit in the image.
+.TP
+\*(bu
+Other unexpected errors during encoding or decoding.
+.RE
+Error messages are printed to standard error.
+.SH DEPENDENCIES
+.TP
+.B Python 3
+.TP
+.B Pillow (PIL)
+.SH BUGS
+Report bugs to harveylinkletter@gmail.com
+.SH AUTHOR
+Your Name harveylinkletter@gmail.com
+.SH SEE ALSO
+None
